@@ -1,0 +1,26 @@
+[
+    {
+    "item": "Milk",
+    "quantity": 3,
+    "unitPrice": 25,        
+    "comments": "Delivery started today.",
+    "dateOfExpense": "2023-07-19",
+    "imageUrl":"assets/images/milk.jpg"
+    },
+    {
+        "item": "Water",
+        "quantity": 2,
+        "unitPrice": 30,        
+        "comments": "2 Water tins.",
+        "dateOfExpense": "2023-07-20",
+        "imageUrl":"assets/images/water_tin.jpg"
+    },        
+    {
+        "item": "Curd",
+        "quantity": 1,
+        "unitPrice": 24,        
+        "comments": "",
+        "dateOfExpense": "2023-07-25",
+        "imageUrl":"assets/images/curd.jpg"
+    }
+]

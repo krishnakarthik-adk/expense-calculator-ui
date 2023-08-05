@@ -2,9 +2,14 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'ec-root',
-  templateUrl: './app.component.html',
+  template: `
+    <div >
+      <h1>{{pageTitle}}</h1>
+      <ec-expenselist></ec-expenselist>
+    </div>
+  `,
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'expense-calculator-ui';
+  pageTitle = 'Expense Calculator, your personal expense keeper.';
 }
