@@ -2,8 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { IExpenseData } from "./expense-data-list";
 import { ExpenseDataService } from "./expense-data-service";
 
-@Component({
-    selector: 'ec-expenselist',
+@Component({    
     templateUrl: './expense-data-list.component.html',
     styleUrls:['./expense-data-list.component.css']
 })
@@ -19,6 +18,8 @@ export class ExpenseDataComponent implements OnInit {
     filteredExpenseDataList: IExpenseData[] = [];
     errorMessage: string = '';
 
+    startDate: string | undefined;    
+
     constructor(private expenseDataService:ExpenseDataService){} // Dependency Injection
 
     get listFilter(): string {
@@ -33,8 +34,19 @@ export class ExpenseDataComponent implements OnInit {
         this.showImage = !this.showImage;
     }
 
+    getExpenseDataForDateRange(expenseDateRange: string): void{        
+        alert('Date range selected: ' + expenseDateRange);
+        this.expenseDataService.getExpenseDataForDateRange(expenseDateRange).subscribe({
+            next: expenseDataList => {
+                this.expenseDataList = expenseDataList;
+                this.filteredExpenseDataList = this.performFilter(this._listFilter);
+            },
+            error: err => this.errorMessage = err
+        });
+    }
+
     // On Page load
-    ngOnInit(): void {
+    ngOnInit(): void {        
         this.expenseDataService.getExpenseData().subscribe({
             next: expenseDataList => {
                 this.expenseDataList = expenseDataList;
