@@ -21,9 +21,6 @@ export class ExpenseDataComponent implements OnInit {
     startDate: string | undefined;  
     
     datesSelected ?: string;
-    // We always show the expenses for the current day on page load (in onInit()).
-    expenseStartDate = new Date().toLocaleDateString();
-    expenseEndDate = new Date().toLocaleDateString();
 
     constructor(private expenseDataService:ExpenseDataService){} // Dependency Injection
 
@@ -52,10 +49,10 @@ export class ExpenseDataComponent implements OnInit {
     // On Page load
     ngOnInit(): void {
         // We always show the expenses for the current day on page load.
-        //const expenseStartDate = new Date().toLocaleDateString();
-        //const expenseEndDate = new Date().toLocaleDateString();
+        const expenseStartDate = new Date().toLocaleDateString();
+        const expenseEndDate = new Date().toLocaleDateString();
         
-        this.datesSelected = this.expenseStartDate.concat(',').concat( this.expenseEndDate);
+        this.datesSelected = expenseStartDate.concat(',').concat( expenseEndDate);
 
         this.expenseDataService.getExpenseDataForDateRange(this.datesSelected).subscribe({
             next: expenseDataList => {
