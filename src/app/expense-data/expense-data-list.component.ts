@@ -18,7 +18,9 @@ export class ExpenseDataComponent implements OnInit {
     filteredExpenseDataList: IExpenseData[] = [];
     errorMessage: string = '';
 
-    startDate: string | undefined;    
+    startDate: string | undefined;  
+    
+    datesSelected ?: string;
 
     constructor(private expenseDataService:ExpenseDataService){} // Dependency Injection
 
@@ -34,8 +36,7 @@ export class ExpenseDataComponent implements OnInit {
         this.showImage = !this.showImage;
     }
 
-    getExpenseDataForDateRange(expenseDateRange: string): void{        
-        alert('Date range selected: ' + expenseDateRange);
+    getExpenseDataForDateRange(expenseDateRange: string): void{               
         this.expenseDataService.getExpenseDataForDateRange(expenseDateRange).subscribe({
             next: expenseDataList => {
                 this.expenseDataList = expenseDataList;
@@ -46,8 +47,14 @@ export class ExpenseDataComponent implements OnInit {
     }
 
     // On Page load
-    ngOnInit(): void {        
-        this.expenseDataService.getExpenseData().subscribe({
+    ngOnInit(): void {
+        // We always show the expenses for the current day on page load.
+        const expenseStartDate = new Date().toLocaleDateString();
+        const expenseEndDate = new Date().toLocaleDateString();
+        
+        this.datesSelected = expenseStartDate.concat(',').concat( expenseEndDate);
+
+        this.expenseDataService.getExpenseDataForDateRange(this.datesSelected).subscribe({
             next: expenseDataList => {
                 this.expenseDataList = expenseDataList;
                 this.filteredExpenseDataList = this.performFilter(this._listFilter);

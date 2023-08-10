@@ -15,10 +15,8 @@
             </div>
         </div>
         <hr/>
-        <div class="row">            
-            <div class="col-md-12">
-                <ngbd-datepicker-range-popup (dateRange) = 'getExpenseDataForDateRange($event)'></ngbd-datepicker-range-popup>
-            </div>
+        <div class="row">
+            <ec-date-range-picker (dateRange) = 'getExpenseDataForDateRange($event)'></ec-date-range-picker>
         </div>
         <hr/>
         <div class="table-responsive">
@@ -49,7 +47,12 @@
                         <td>{{expenseData.comments}}</td>                        
                     </tr>
                 </tbody>
-            </table>
+            </table>            
+        </div>
+        <div class="row" *ngIf="expenseDataList.length === 0">
+            <div class="col-md-6">
+                Hurray! You have no expenses for the selected date range.
+            </div>
         </div>
     </div>
 </div>

@@ -10,9 +10,9 @@ export class ExpenseDataService {
 
     //private expenseDataUrl = 'assets/expense-data.json'; // Hard coded data from the assets folder for quick test
     // private expenseDataUrl = "api/v1/getWaterAndExpenseData" // From the spring boot app
-    private expenseDataUrl = "api/v1/getWaterAndExpenseData" // From the spring boot app, diff end point that takes start date and end date
+    private expenseDataUrl = "api/v1/getWaterAndExpenseData" // From the spring boot app, takes date range
     private expenseDataForDateRangeUrl = "api/v1/getWaterAndExpenseDataFor";
-    dates: string[] | undefined;
+    selectdDates: string[] | undefined;
 
     constructor(private http: HttpClient){}
 
@@ -24,9 +24,9 @@ export class ExpenseDataService {
     }
 
     getExpenseDataForDateRange(dateRange: string):Observable<IExpenseData[]> {
-        this.dates = dateRange.split(',');
-        alert('Final URL: ' + this.expenseDataForDateRangeUrl+'?strStartDate=' + this.dates[0] + '&strEndDate=' + this.dates[1]);
-        return this.http.get<IExpenseData[]>(this.expenseDataForDateRangeUrl+'?strStartDate=' + this.dates[0] + '&strEndDate=' + this.dates[1]).pipe(
+        this.selectdDates = dateRange.split(',');
+        // alert('Final URL: ' + this.expenseDataForDateRangeUrl+'?strStartDate=' + this.dates[0] + '&strEndDate=' + this.dates[1]);
+        return this.http.get<IExpenseData[]>(this.expenseDataForDateRangeUrl+'?strStartDate=' + this.selectdDates[0] + '&strEndDate=' + this.selectdDates[1]).pipe(
             tap(data => console.log('All', JSON.stringify(data))), // this is to look through the observable
             catchError(this.handleError)
         );
