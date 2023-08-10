@@ -18,8 +18,8 @@
         <div class="row">
             <ec-date-range-picker (dateRange) = 'getExpenseDataForDateRange($event)'></ec-date-range-picker>
         </div>
-        <hr/>
-        <div class="table-responsive">
+        <hr/>        
+        <div class="table-responsive">          
             <table class="table" *ngIf='expenseDataList.length'>
                 <thead>
                     <tr>
