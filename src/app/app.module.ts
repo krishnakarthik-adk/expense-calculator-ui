@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome-component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbdDatepickerRangePopup } from './shared/date-picker-popup';
+import { ECDateRangePicker } from './common/date-range-picker.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +27,8 @@ import { NgbdDatepickerRangePopup } from './shared/date-picker-popup';
       {path: 'expenseData', component: ExpenseDataComponent},
       {path: '', component: WelcomeComponent}
     ]),
-    NgbModule,    
-    NgbdDatepickerRangePopup     
+    NgbModule,
+    ECDateRangePicker    
   ],
   providers: [],
   bootstrap: [AppComponent]
