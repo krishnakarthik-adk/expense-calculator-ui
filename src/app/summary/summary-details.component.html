@@ -1,0 +1,42 @@
+<div class="card">
+    <div class="card-header">
+        {{pageTitle}}
+    </div>
+    <div class="card-body">
+        Please select a month to display the expense summary for the desired month.
+        <hr/>
+        <div class="row">            
+            <div class="col-md-3">
+                <select-month></select-month>
+            </div>       
+            <div class="col-md-3">
+                <select-year></select-year>
+            </div>     
+        </div>        
+        <div class="row">
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-header">
+                        TOTAL Payable: {{finalAmountPayabale | currency:'INR':'symbol':'1.2-2'}}
+                    </div>
+                </div>
+            </div>
+        </div>    
+        <div class="table-responsive">          
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Item</th>                        
+                        <th>Amount Payable</th>                                                
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let itemSummary of itemSummaryDataList'>                        
+                        <td>{{itemSummary.item}}</td>
+                        <td>{{itemSummary.amountPayabalePerItem | currency:'INR':'symbol':'1.2-2'}}</td>                                                                  
+                    </tr>
+                </tbody>
+            </table>            
+        </div>        
+    </div>
+</div>

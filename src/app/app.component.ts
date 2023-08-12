@@ -8,7 +8,8 @@ import { Component } from '@angular/core';
                   <ul class='nav nav-pills'>
                     <li><a class='nav-link' routerLinkActive='active' routerLink='/welcome'>Home</a></li>
                     <li><a class='nav-link' routerLinkActive='active' routerLink='/expenseData'>Water And Dairy Expenses</a></li>
-                    
+                    <li><a class='nav-link'></a></li>
+                    <li><a class='nav-link' routerLinkActive='active' routerLink='/summaryData'>Expense Summary</a></li>
                   </ul>
               </nav>
               <div class='container'>
