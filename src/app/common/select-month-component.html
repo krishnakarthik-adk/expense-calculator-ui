@@ -1,0 +1,11 @@
+<mat-form-field>
+    <mat-label>Select month</mat-label>
+    <mat-select [(value)]="selected">
+        <mat-option>None</mat-option>
+        <mat-option value="October">October</mat-option>
+        <mat-option value="November">November</mat-option>
+        <mat-option value="December">December</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<p>You selected: {{selected}}</p>
