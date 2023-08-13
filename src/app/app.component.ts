@@ -10,6 +10,8 @@ import { Component } from '@angular/core';
                     <li><a class='nav-link' routerLinkActive='active' routerLink='/expenseData'>Water And Dairy Expenses</a></li>
                     <li><a class='nav-link'></a></li>
                     <li><a class='nav-link' routerLinkActive='active' routerLink='/summaryData'>Expense Summary</a></li>
+                    <li><a class='nav-link'></a></li>
+                    <li><a class='nav-link' routerLinkActive='active' routerLink='/expenseInput'>Expense Input</a></li>
                   </ul>
               </nav>
               <div class='container'>

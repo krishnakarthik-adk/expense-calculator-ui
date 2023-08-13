@@ -15,10 +15,11 @@ import { SummaryDetailsComponent } from './summary/summary-details.component';
 import { ECMonthSelectComponent} from './common/select-month.component';
 import { ECYearSelectComponent } from './common/select-year.component';
 import { FooterComponent } from './common/footer.component';
+import { ExpenseInputComponent } from './expense-input/expense-input.component';
 
 @NgModule({
   declarations: [
-    AppComponent, ExpenseDataComponent, WelcomeComponent, SummaryDetailsComponent, FooterComponent
+    AppComponent, ExpenseDataComponent, WelcomeComponent, SummaryDetailsComponent, FooterComponent, ExpenseInputComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +31,7 @@ import { FooterComponent } from './common/footer.component';
       {path: 'welcome', component: WelcomeComponent},
       {path: 'expenseData', component: ExpenseDataComponent},
       {path: 'summaryData', component: SummaryDetailsComponent},
+      {path: 'expenseInput', component: ExpenseInputComponent},
       {path: '', component: WelcomeComponent}
     ]),
     NgbModule,

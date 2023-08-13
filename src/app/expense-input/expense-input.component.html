@@ -1,0 +1,54 @@
+<div class="card">
+    <div class="card-header">
+        {{pageTitle}}
+    </div>
+    <div class="card-body">
+        Please provide the input to keep your expenses.
+        <hr />
+        <div class="row">
+            <div class="col-md-2">
+                <button class="btn btn-primary">Add Row</button>
+            </div>
+        </div>
+        <br />
+        <!-- <form [formGroup]="expenseInputForm" (ngSubmit)="onSubmit()"> -->
+            <div class="row">
+                <div class="col-md-2">
+                    <input type="text" [(ngModel)]="item" placeholder="Item name" />
+                </div>
+                <div class="col-md-2">
+                    <input type="text" [(ngModel)]="amount" placeholder="Amount" />
+                </div>
+                <div class="col-md-2">
+                    <select [(ngModel)]="expenseCategory">
+                        <option>None</option>
+                        <option value="emi">EMI</option>
+                        <option value="groceries">Groceries</option>
+                        <option value="veggies and fruits">Veggies and Fruits</option>
+                        <option value="electricity bill">Electricity Bill</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="fuel">Fuel</option>
+                        <option value="vehicle maintenance">Vehicle Maintenance</option>
+                        <option value="internet/mobile">Internet/Mobile</option>
+                        <option value="maid salary">Maid Salary</option>
+                        <option value="lpg">LPG</option>
+                        <option value="savings">Savings</option>
+                        <option value="personal">Personal</option>
+                        <option value="medical">Medical</option>
+                        <option value="miscellaneous">Miscellaneous</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" [(ngModel)]="comments" placeholder="Comments" />
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-2">
+                    <button class="btn btn-primary" type="submit">Submit Expenses</button>
+                </div>
+            </div>
+        <!-- </form> -->
+    </div>
+    <ec-footer></ec-footer>
+</div>
