@@ -15,16 +15,31 @@ export class SummaryDetailsComponent implements OnInit {
   finalAmountPayabale: string = '0';
 
   errorMessage: string = '';
+  month: string = 'None';
+  year: string = 'None';
 
   constructor(private expenseSummaryService: SummaryDataService){}
 
-  // To do for the button click on the view
+
+  getExpenseSummary(): void{   
+
+    this.expenseSummaryService.getExpenseSummaryForTheMonth(this.month, this.year).subscribe({
+      next: expenseSummaryDataObject => {                      
+        this.finalAmountPayabale = expenseSummaryDataObject.finalAmountPayable;       
+        this.itemSummaryDataList = expenseSummaryDataObject.expenseSummaryDTOList;       
+      },
+      error: err => this.errorMessage = err
+  });
+  }  
 
   // On page load
   ngOnInit(): void {
     // We always show the expenses for the current month on page load.
+    
+    this.month  = new Date().getMonth().toString();
+    this.year  = new Date().getFullYear().toString();
 
-    this.expenseSummaryService.getExpenseSummaryForTheMonth().subscribe({
+    this.expenseSummaryService.getExpenseSummaryForTheMonth(this.month, this.year).subscribe({
       next: expenseSummaryDataObject => {                      
         this.finalAmountPayabale = expenseSummaryDataObject.finalAmountPayable;       
         this.itemSummaryDataList = expenseSummaryDataObject.expenseSummaryDTOList;        

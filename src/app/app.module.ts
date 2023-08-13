@@ -14,10 +14,11 @@ import { ECDateRangePicker } from './common/date-range-picker.component';
 import { SummaryDetailsComponent } from './summary/summary-details.component';
 import { ECMonthSelectComponent} from './common/select-month.component';
 import { ECYearSelectComponent } from './common/select-year.component';
+import { FooterComponent } from './common/footer.component';
 
 @NgModule({
   declarations: [
-    AppComponent, ExpenseDataComponent, WelcomeComponent, SummaryDetailsComponent 
+    AppComponent, ExpenseDataComponent, WelcomeComponent, SummaryDetailsComponent, FooterComponent
   ],
   imports: [
     BrowserModule,

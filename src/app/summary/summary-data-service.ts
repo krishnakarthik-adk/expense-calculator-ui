@@ -11,8 +11,8 @@ export class SummaryDataService {
 
     constructor(private http: HttpClient){}
 
-    getExpenseSummaryForTheMonth(): Observable<IExpenseSummaryData> {
-        return this.http.get<IExpenseSummaryData>(this.summaryDataServiceUrl+'?summaryMonth=').pipe(
+    getExpenseSummaryForTheMonth(month: string, year:string): Observable<IExpenseSummaryData> {
+        return this.http.get<IExpenseSummaryData>(this.summaryDataServiceUrl+'?month=' + month + '&year=' + year).pipe(
             tap(data => console.log('All', JSON.stringify(data))), // this is to look through the observable
             catchError(this.handleError)
         );
