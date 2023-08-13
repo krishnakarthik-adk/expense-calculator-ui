@@ -8,7 +8,7 @@ import { IItemSummaryData } from './summary-item-data';
   styleUrls: ['./summary-details.component.css']
 })
 export class SummaryDetailsComponent implements OnInit {
-  pageTitle: string = 'Summary Report for the current month.';
+  pageTitle: string = 'Summary Report';
    
   // to extract data from the response
   itemSummaryDataList: IItemSummaryData[] = [];
@@ -35,9 +35,9 @@ export class SummaryDetailsComponent implements OnInit {
   // On page load
   ngOnInit(): void {
     // We always show the expenses for the current month on page load.
-    
-    this.month  = new Date().getMonth().toString();
-    this.year  = new Date().getFullYear().toString();
+    // We add 1 to the month because, the JS deals from index 0 for months Jan-0, Feb-1 etc.
+    this.month  = (new Date().getMonth() + 1) .toString();
+    this.year  = new Date().getFullYear().toString();   
 
     this.expenseSummaryService.getExpenseSummaryForTheMonth(this.month, this.year).subscribe({
       next: expenseSummaryDataObject => {                      
