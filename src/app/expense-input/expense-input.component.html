@@ -10,7 +10,7 @@
                 <!-- <ec-datepicker></ec-datepicker> -->
                 <mat-form-field>
                     <mat-label>Date of expense</mat-label>
-                    <input matInput [matDatepicker]="picker">
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="dateOfExpense">
                     <mat-hint>MM/DD/YYYY</mat-hint>
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>

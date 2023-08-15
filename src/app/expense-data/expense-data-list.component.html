@@ -49,9 +49,10 @@
                 </tbody>
             </table>            
         </div>
-        <div class="row" *ngIf="expenseDataList.length === 0">
-            <div class="col-md-6">
-                Hurray! You have no expenses for the selected date range.
+        <div class="row" *ngIf="expenseDataList.length === 0 && dateRange.length > 0">
+            <div class="col-md-6 alert alert-info">
+                <h4 class="alert-heading">Hurray!</h4>
+                <p>You have no expenses for the selected date range.</p>
             </div>
         </div>
     </div>

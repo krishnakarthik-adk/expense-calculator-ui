@@ -22,6 +22,9 @@ export class ExpenseDataComponent implements OnInit {
     
     datesSelected ?: string;
 
+    // For display of alert stating that there are no expenses for the date range for the day (on page load)
+    dateRange: string = '';
+
     constructor(private expenseDataService:ExpenseDataService){} // Dependency Injection
 
     get listFilter(): string {
@@ -36,7 +39,8 @@ export class ExpenseDataComponent implements OnInit {
         this.showImage = !this.showImage;
     }
 
-    getExpenseDataForDateRange(expenseDateRange: string): void{               
+    getExpenseDataForDateRange(expenseDateRange: string): void{     
+        this.dateRange = expenseDateRange;          
         this.expenseDataService.getExpenseDataForDateRange(expenseDateRange).subscribe({
             next: expenseDataList => {
                 this.expenseDataList = expenseDataList;

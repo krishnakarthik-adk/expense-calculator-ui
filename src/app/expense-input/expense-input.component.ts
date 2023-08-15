@@ -15,7 +15,9 @@ export class ExpenseInputComponent implements OnInit{
     amount: '',
     expenseCategory: 'None',
     notes: ''
-  }; 
+  };
+
+  dateOfExpense: string = '';
 
   dynamicExpenseArray: ExpenseInput [] = [];  
 
@@ -36,7 +38,7 @@ export class ExpenseInputComponent implements OnInit{
   }
 
   onSubmit(form: NgForm){
-    console.log(form.valid);
+    console.log(form.valid);    
   }
   
 }
