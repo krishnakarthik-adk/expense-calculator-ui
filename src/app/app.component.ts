@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
                     <li><a class='nav-link'></a></li>
                     <li><a class='nav-link' routerLinkActive='active' routerLink='/summaryData'>Expense Summary</a></li>
                     <li><a class='nav-link'></a></li>
-                    <li><a class='nav-link' routerLinkActive='active' routerLink='/expenseInput'>Expense Input</a></li>
+                    <li><a class='nav-link' routerLinkActive='active' routerLink='/expenseInput'>Record My Expenses</a></li>
                   </ul>
               </nav>
               <div class='container'>

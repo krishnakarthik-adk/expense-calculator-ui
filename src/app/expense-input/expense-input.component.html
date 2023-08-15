@@ -7,8 +7,21 @@
         <hr />
         <div class="row">
             <div class="col-md-2">
+                <!-- <ec-datepicker></ec-datepicker> -->
+                <mat-form-field>
+                    <mat-label>Date of expense</mat-label>
+                    <input matInput [matDatepicker]="picker">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+            </div>            
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-2">
                 <button class="btn btn-primary" (click)="addRow()">Add Row</button>
-            </div>
+            </div>          
         </div>
         <br />
         <form #form="ngForm" (ngSubmit)="onSubmit(form)">
@@ -54,13 +67,13 @@
             <br />
             <div class="row">
                 <div class="col-md-2">
-                    <button class="btn btn-primary">Submit Expenses</button>
+                    <button class="btn btn-primary" [disabled]="dynamicExpenseArray.length === 0">Submit Expenses</button>
                 </div>
             </div>
-            <!-- {{form.value | json}} -->
+            {{form.value | json}}
         </form>       
     </div>
     <ec-footer></ec-footer>
 </div>
 
-<!-- {{dynamicExpenseArray | json}} -->
+{{dynamicExpenseArray | json}}

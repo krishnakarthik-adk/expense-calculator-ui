@@ -5,7 +5,7 @@ import { ExpenseInput } from './expense-input';
 @Component({
   selector: 'ec-expense-input',
   templateUrl: './expense-input.component.html',
-  styleUrls: ['./expense-input.component.css']
+  styleUrls: ['./expense-input.component.css'],  
 })
 export class ExpenseInputComponent implements OnInit{
   pageTitle: string = 'Expense Input';

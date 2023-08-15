@@ -12,10 +12,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ECDateRangePicker } from './common/date-range-picker.component';
 import { SummaryDetailsComponent } from './summary/summary-details.component';
-import { ECMonthSelectComponent} from './common/select-month.component';
-import { ECYearSelectComponent } from './common/select-year.component';
 import { FooterComponent } from './common/footer.component';
 import { ExpenseInputComponent } from './expense-input/expense-input.component';
+
+
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -36,8 +40,7 @@ import { ExpenseInputComponent } from './expense-input/expense-input.component';
     ]),
     NgbModule,
     ECDateRangePicker,
-    ECMonthSelectComponent,
-    ECYearSelectComponent, 
+    MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
