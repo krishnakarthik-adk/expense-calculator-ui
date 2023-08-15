@@ -3,18 +3,11 @@
         {{pageTitle}}
     </div>
     <div class="card-body">
-        Please select a month to display the expense summary for the desired month.
+        Please select month and year to display the expense summary for the desired selection.
         <hr />
         <div class="row">
-            <!-- <div class="col-md-3">
-                <select-month></select-month>
-            </div>       
-            <div class="col-md-3">
-                <select-year></select-year>
-            </div>   -->
-            <div class="col-md-3">
-                Month:
-                <select [(ngModel)]="month">
+            <div class="col-md-2">                
+                <select [(ngModel)]="month" class="form-select">
                     <option>None</option>
                     <option value="1">January</option>
                     <option value="2">February</option>
@@ -28,13 +21,14 @@
                     <option value="10">October</option>
                     <option value="11">November</option>
                     <option value="12">December</option>
-                </select>
-                Year:
-                <select [(ngModel)]="year">
+                </select>                              
+            </div>
+            <div class="col-md-2">                
+                <select [(ngModel)]="year" class="form-select">
                     <option>None</option>
                     <option value="2023">2023</option>                    
-                </select>                
-            </div>            
+                </select>  
+            </div>        
             <div class="col-md-2">
                 <button class="btn btn-primary" (click)="getExpenseSummary()">Get Summary</button>
             </div>
@@ -45,13 +39,13 @@
             <div class="col-md-5">
                 <div class="card">
                     <div class="card-header">
-                        TOTAL Expense: {{finalAmountPayabale | currency:'INR':'symbol':'1.2-2'}}
+                        TOTAL Expense: <b> {{finalAmountPayabale | currency:'INR':'symbol':'1.2-2'}} </b>
                     </div>
                 </div>
             </div>
         </div>
         <div class="table-responsive">
-            <table class="table">
+            <table class="table table-striped" *ngIf="itemSummaryDataList.length">
                 <thead>
                     <tr>
                         <th>Item</th>
@@ -66,9 +60,11 @@
                 </tbody>
             </table>
         </div>
+        <br/>
         <div class="row" *ngIf="itemSummaryDataList.length === 0">
-            <div class="col-md-6">
-                Hurray! You have no expenses for the selected month.
+            <div class="col-md-12 alert alert-info">
+                <h4 class="alert-heading">Hurray!!</h4>
+                 <p>You have no expenses for the selected month.</p>
             </div>
         </div>
     </div>
