@@ -27,6 +27,8 @@ export class ExpenseInputComponent implements OnInit {
 
   constructor(private expenseService: ExpenseService) { } // Dependency Injection
 
+  httpPostResponse: boolean = false;
+
   addRow(): void {
     this.dynamicExpenseArray.push({
       item: '',
@@ -50,8 +52,15 @@ export class ExpenseInputComponent implements OnInit {
     this.expenseDate = formatDate(this.dateOfExpense, 'MM/dd/yyyy', 'en-US');    
     this.expenseService.postExpenseInputForm(this.dynamicExpenseArray, this.expenseDate).subscribe(
       {
-        next: expenseRecord => {
-          console.log('success: ' + expenseRecord);          
+        next: status => {
+          console.log('success: ' + status);
+          this.httpPostResponse = true;
+          this.dynamicExpenseArray = [{
+            item: '',
+            amount: '',
+            expenseCategory: 'None',
+            notes: ''
+          }];
         },
         error: err => console.log('error: ' + err)
       }

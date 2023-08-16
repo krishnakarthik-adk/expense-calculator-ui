@@ -3,7 +3,7 @@
         {{pageTitle}}
     </div>
     <div class="card-body">
-        Please provide the input to keep your expenses.
+        Please provide the input to record your expenses.
         <hr />
         <div class="row">
             <div class="col-md-2">
@@ -23,9 +23,12 @@
                 <button class="btn btn-primary" (click)="addRow()">Add Row</button>
             </div>          
         </div>
-        <br />
+        <br />        
+        <div [hidden]="!httpPostResponse" class="alert alert-success alert-dismissible">
+            <strong>Success!</strong> Expenses are captured by your expense keeper!           
+        </div>
         <form #form="ngForm" (ngSubmit)="onSubmit(form)">
-            <div class="table-responsive">
+            <div class="table-responsive" *ngIf="dynamicExpenseArray.length">
                 <table class="table">
                     <thead>
                         <tr>                            
@@ -33,6 +36,7 @@
                             <th>Amount</th>
                             <th>Category</th>
                             <th>Notes</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,7 +63,7 @@
                                 </select>
                             </td>
                             <td><input type="text" name="notes[{{i}}]" placeholder="Notes" class="form-control" [(ngModel)]="expInput.notes"/></td>
-                            <td><button class="btn btn-primary" (click)="deleteRow(i)">Delete Row</button></td>
+                            <td><button class="btn btn-warning" (click)="deleteRow(i)">Delete Row</button></td>
                         </tr>
                     </tbody>
                 </table>
