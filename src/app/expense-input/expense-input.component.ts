@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormsModule, ReactiveFormsModule, NgForm } from
 import { ExpenseInput } from './expense-input';
 import { ExpenseService } from './expense-service.service';
 import { formatDate } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'ec-expense-input',
@@ -25,6 +26,8 @@ export class ExpenseInputComponent implements OnInit {
 
   dynamicExpenseArray: ExpenseInput[] = [];
 
+  expenseCategories!: Observable<String []>;
+
   constructor(private expenseService: ExpenseService) { } // Dependency Injection
 
   httpPostResponse: boolean = false;
@@ -43,7 +46,8 @@ export class ExpenseInputComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dynamicExpenseArray.push(this.expenseInput);
+    this.dynamicExpenseArray.push(this.expenseInput);    
+    this.expenseCategories = this.expenseService.getExpenseRecordSelectOptions();
   }
 
   onSubmit(form: NgForm) {
@@ -52,8 +56,8 @@ export class ExpenseInputComponent implements OnInit {
     this.expenseDate = formatDate(this.dateOfExpense, 'MM/dd/yyyy', 'en-US');    
     this.expenseService.postExpenseInputForm(this.dynamicExpenseArray, this.expenseDate).subscribe(
       {
-        next: status => {
-          console.log('success: ' + status);
+        next: response => {
+          console.log('success: ' + response);
           this.httpPostResponse = true;
           this.dynamicExpenseArray = [{
             item: '',

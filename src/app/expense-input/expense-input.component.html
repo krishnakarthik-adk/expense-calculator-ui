@@ -45,7 +45,10 @@
                             <td><input type="text" name="amount[{{i}}]" placeholder="Amount" class="form-control" [(ngModel)]="expInput.amount"/></td>
                             <td>
                                 <select name="expenseCategory[{{i}}]" class="form-select" [(ngModel)]="expInput.expenseCategory">
-                                    <option selected>None</option>
+                                    <option *ngFor="let category of expenseCategories | async">
+                                        {{category}}
+                                    </option>
+                                    <!-- <option selected>None</option>
                                     <option value="emi">EMI</option>
                                     <option value="groceries">Groceries</option>
                                     <option value="veggies and fruits">Veggies and Fruits</option>
@@ -59,7 +62,7 @@
                                     <option value="savings">Savings</option>
                                     <option value="personal">Personal</option>
                                     <option value="medical">Medical</option>
-                                    <option value="miscellaneous">Miscellaneous</option>
+                                    <option value="miscellaneous">Miscellaneous</option> -->
                                 </select>
                             </td>
                             <td><input type="text" name="notes[{{i}}]" placeholder="Notes" class="form-control" [(ngModel)]="expInput.notes"/></td>
