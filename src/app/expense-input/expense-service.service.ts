@@ -19,8 +19,8 @@ export class ExpenseService {
   }
 
   getExpenseRecordSelectOptions(): Observable<any> {
-       return of(['None','EMI','Groceries','Veggies and Fruits','Home Maintenance','Utility Bills','Shopping','Fuel','Vehicle Maintenance','Savings','Personal','Medical','Miscellaneous']);
-      // return this.http.get(this.selectionOptionUrl); // To do
+      // return of(['None','EMI','Groceries','Veggies and Fruits','Home Maintenance','Utility Bills','Shopping','Fuel','Vehicle Maintenance','Savings','Personal','Medical','Miscellaneous']);
+      return this.http.get(this.selectionOptionUrl); // To do
   }
   
 }
