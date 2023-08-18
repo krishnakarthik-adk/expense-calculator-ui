@@ -8,6 +8,7 @@ import { Observable, tap, catchError, throwError } from "rxjs";
 })
 export class SummaryDataService {
     private summaryDataServiceUrl = '/api/expensecalculator/v1/expenseSummary';
+    private expenseSummaryUrl ='/api/expensecalculator/v1/monthlyExpenseSummary';
 
     constructor(private http: HttpClient){}
 
@@ -17,6 +18,13 @@ export class SummaryDataService {
             catchError(this.handleError)
         );
     }
+
+    getMonthlyExpense(month: string, year:string): Observable<IExpenseSummaryData> {
+      return this.http.get<IExpenseSummaryData>(this.expenseSummaryUrl+'?month=' + month + '&year=' + year).pipe(
+          tap(data => console.log('All', JSON.stringify(data))), // this is to look through the observable
+          catchError(this.handleError)
+      );
+  }
 
     private handleError(err: HttpErrorResponse): Observable<never> {
         // in a real world app, we may send the server to some remote logging infrastructure

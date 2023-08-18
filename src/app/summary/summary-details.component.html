@@ -36,10 +36,18 @@
         </div>
         <hr />
         <div class="row">
+            <div class="col-md-5">                
+                    <div class="alert alert-warning">
+                        TOTAL Monthly Expense: <b> {{finalAmountPayabale + totalMonthlyExpense | currency:'INR':'symbol':'1.2-2'}} </b>
+                    </div>                
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
             <div class="col-md-5">
                 <div class="card">
                     <div class="card-header">
-                        TOTAL Expense for Water and Dairy: <b> {{finalAmountPayabale | currency:'INR':'symbol':'1.2-2'}} </b>
+                        Monthly Expense for Water and Dairy: <b> {{finalAmountPayabale | currency:'INR':'symbol':'1.2-2'}} </b>
                     </div>
                 </div>
             </div>
@@ -59,15 +67,47 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-        <!-- To do Monthly expenses -->
+        </div>        
         <br/>
         <div class="row" *ngIf="itemSummaryDataList.length === 0">
-            <div class="col-md-12 alert alert-info">
-                <h4 class="alert-heading">Hurray!!</h4>
-                 <p>You have no expenses for the selected month.</p>
+            <div class="col-md-12 alert alert-info">                
+                 <p>Hurray!! You have no water and dairy expenses for the selected month.</p>
             </div>
         </div>
+        <hr/>
+        <!-- Monthly expenses -->
+        <div class="row">
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-header">
+                        Other Monthly Expense: <b> {{totalMonthlyExpense | currency:'INR':'symbol':'1.2-2'}} </b>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped" *ngIf="monthlyExpenseDataList.length">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Expense</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let monthlyExpenseitemSummary of monthlyExpenseDataList'>
+                        <td>{{monthlyExpenseitemSummary.item}}</td>
+                        <td>{{monthlyExpenseitemSummary.amountPayabalePerItem | currency:'INR':'symbol':'1.2-2'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>        
+        <br/>
+        <div class="row" *ngIf="monthlyExpenseDataList.length === 0">
+            <div class="col-md-12 alert alert-info">                
+                 <p>Hurray!! You have no monthly expenses for the selected month.</p>
+            </div>
+        </div>
+        <br/>
     </div>
     <ec-footer></ec-footer>
 </div>
