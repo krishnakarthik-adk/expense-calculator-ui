@@ -39,7 +39,7 @@
             <div class="col-md-5">
                 <div class="card">
                     <div class="card-header">
-                        TOTAL Expense: <b> {{finalAmountPayabale | currency:'INR':'symbol':'1.2-2'}} </b>
+                        TOTAL Expense for Water and Dairy: <b> {{finalAmountPayabale | currency:'INR':'symbol':'1.2-2'}} </b>
                     </div>
                 </div>
             </div>
@@ -60,6 +60,7 @@
                 </tbody>
             </table>
         </div>
+        <!-- To do Monthly expenses -->
         <br/>
         <div class="row" *ngIf="itemSummaryDataList.length === 0">
             <div class="col-md-12 alert alert-info">

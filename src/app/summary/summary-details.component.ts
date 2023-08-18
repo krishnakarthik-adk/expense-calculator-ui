@@ -23,7 +23,7 @@ export class SummaryDetailsComponent implements OnInit {
 
   getExpenseSummary(): void{   
 
-    this.expenseSummaryService.getExpenseSummaryForTheMonth(this.month, this.year).subscribe({
+    this.expenseSummaryService.getWaterAndDairyMonthlyExpense(this.month, this.year).subscribe({
       next: expenseSummaryDataObject => {                      
         this.finalAmountPayabale = expenseSummaryDataObject.finalAmountPayable;       
         this.itemSummaryDataList = expenseSummaryDataObject.expenseSummaryDTOList;       
@@ -39,7 +39,7 @@ export class SummaryDetailsComponent implements OnInit {
     this.month  = (new Date().getMonth() + 1) .toString();
     this.year  = new Date().getFullYear().toString();   
 
-    this.expenseSummaryService.getExpenseSummaryForTheMonth(this.month, this.year).subscribe({
+    this.expenseSummaryService.getWaterAndDairyMonthlyExpense(this.month, this.year).subscribe({
       next: expenseSummaryDataObject => {                      
         this.finalAmountPayabale = expenseSummaryDataObject.finalAmountPayable;       
         this.itemSummaryDataList = expenseSummaryDataObject.expenseSummaryDTOList;        
