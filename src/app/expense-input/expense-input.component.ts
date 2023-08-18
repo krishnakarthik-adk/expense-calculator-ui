@@ -14,7 +14,7 @@ export class ExpenseInputComponent implements OnInit {
   pageTitle: string = 'Expense Input';
 
   expenseInput: ExpenseInput = {
-    item: '',
+    // item: '',
     amount: '',
     expenseCategory: 'None',
     notes: ''
@@ -34,7 +34,7 @@ export class ExpenseInputComponent implements OnInit {
 
   addRow(): void {
     this.dynamicExpenseArray.push({
-      item: '',
+      // item: '',
       amount: '',
       expenseCategory: 'None',
       notes: ''
@@ -60,7 +60,7 @@ export class ExpenseInputComponent implements OnInit {
           console.log('success: ' + response);
           this.httpPostResponse = true;
           this.dynamicExpenseArray = [{
-            item: '',
+            // item: '',
             amount: '',
             expenseCategory: 'None',
             notes: ''

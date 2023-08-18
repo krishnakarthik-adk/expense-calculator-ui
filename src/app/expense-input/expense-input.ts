@@ -1,5 +1,5 @@
 export interface ExpenseInput {
-    item: string;
+    // item: string;
     amount: string;
     expenseCategory: string;
     notes: string;
