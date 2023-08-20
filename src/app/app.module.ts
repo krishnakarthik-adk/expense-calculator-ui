@@ -20,10 +20,11 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatNativeDateModule} from '@angular/material/core';
+import { WaterDairyComponent } from './water-dairy/water-dairy.component';
 
 @NgModule({
   declarations: [
-    AppComponent, ExpenseDataComponent, WelcomeComponent, SummaryDetailsComponent, FooterComponent, ExpenseInputComponent
+    AppComponent, ExpenseDataComponent, WelcomeComponent, SummaryDetailsComponent, FooterComponent, ExpenseInputComponent, WaterDairyComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +37,7 @@ import {MatNativeDateModule} from '@angular/material/core';
       {path: 'expenseData', component: ExpenseDataComponent},
       {path: 'summaryData', component: SummaryDetailsComponent},
       {path: 'expenseInput', component: ExpenseInputComponent},
+      {path: 'waterdairyExpenseInput', component: WaterDairyComponent},
       {path: '', component: WelcomeComponent}
     ]),
     NgbModule,

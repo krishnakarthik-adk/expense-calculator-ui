@@ -1,0 +1,72 @@
+<div class="card">
+    <div class="card-header">
+        {{pageTitle}}
+    </div>
+    <div class="card-body">
+        Please provide the input to record your expenses.
+        <hr />
+        <div class="row">
+            <div class="col-md-2">                
+                <mat-form-field>
+                    <mat-label>Date of expense</mat-label>
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="dateOfExpense">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+            </div>            
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-2">
+                <button class="btn btn-primary" (click)="addRow()" [disabled]="dynamicArray.length === 3">Add Row</button>
+            </div>          
+        </div>
+        <br />        
+        <div [hidden]="!httpPostResponse" class="alert alert-success">
+            <strong>Success!</strong> Expenses are captured by your expense keeper!           
+        </div>
+        <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>                                                       
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Comments</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let waterDairy of dynamicArray; let i = index">                            
+                            <td>
+                                <!-- Use this (change)="onSelectChange(selectOption.value, i)" when we read the values from the database -->
+                                <select #selectOption name="item[{{i}}]" class="form-select" [(ngModel)]="waterDairy.item">                                                                       
+                                    <option selected>None</option>
+                                    <option value="curd">Curd</option>
+                                    <option value="milk">Milk</option>
+                                    <option value="water">Water</option>                                                                                                          
+                                </select>
+                            </td>
+                            <td><input type="text" name="quantity[{{i}}]" placeholder="Quantity" class="form-control" [(ngModel)]="waterDairy.quantity" /></td>
+                            <td><input type="text" name="unitPrice[{{i}}]" placeholder="Unit Price" class="form-control" [(ngModel)]="waterDairy.unitPrice"/></td>
+                            <td><input type="text" name="comments[{{i}}]" placeholder="Comments" class="form-control" [(ngModel)]="waterDairy.comments"/></td>
+                            <td><button class="btn btn-warning" (click)="deleteRow(i)">Delete Row</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-2">
+                    <button class="btn btn-primary" [disabled]="dynamicArray.length === 0">Submit Expenses</button>
+                </div>
+            </div>
+            <!-- {{form.value | json}} -->
+        </form>       
+    </div>
+    <ec-footer></ec-footer>
+</div>
+
+<!-- {{dynamicArray | json}} -->
