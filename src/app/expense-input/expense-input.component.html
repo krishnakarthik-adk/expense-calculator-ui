@@ -34,6 +34,7 @@
                         <tr>                            
                             <!-- <th>Item</th> -->
                             <th>Amount</th>
+                            <th>Transaction Type</th>
                             <th>Category</th>
                             <th>Notes</th>
                             <th>Action</th>
@@ -43,6 +44,13 @@
                         <tr *ngFor="let expInput of dynamicExpenseArray; let i = index">                                 
                             <!-- <td><input type="text" name="item[{{i}}]" placeholder="Item" class="form-control" [(ngModel)]="expInput.item"/></td> -->
                             <td><input type="text" name="amount[{{i}}]" placeholder="Amount" class="form-control" [(ngModel)]="expInput.amount"/></td>
+                            <td>
+                                <select name="transactionType[{{i}}]" class="form-select" [(ngModel)]="expInput.transactionType">
+                                    <option selected>None</option>
+                                    <option value="Credit Card">Credit Card</option>
+                                    <option value="Cash">Cash</option>
+                                </select>
+                            </td>
                             <td>
                                 <select name="expenseCategory[{{i}}]" class="form-select" [(ngModel)]="expInput.expenseCategory">
                                     <option selected="None" *ngFor="let category of expenseCategories | async">

@@ -16,6 +16,7 @@ export class ExpenseInputComponent implements OnInit {
   expenseInput: ExpenseInput = {
     // item: '',
     amount: '',
+    transactionType: 'None',
     expenseCategory: 'None',
     notes: ''
   };
@@ -36,6 +37,7 @@ export class ExpenseInputComponent implements OnInit {
     this.dynamicExpenseArray.push({
       // item: '',
       amount: '',
+      transactionType: 'None',
       expenseCategory: 'None',
       notes: ''
     });
@@ -62,6 +64,7 @@ export class ExpenseInputComponent implements OnInit {
           this.dynamicExpenseArray = [{
             // item: '',
             amount: '',
+            transactionType: 'None',
             expenseCategory: 'None',
             notes: ''
           }];
