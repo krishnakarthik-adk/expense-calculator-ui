@@ -63,16 +63,16 @@ export class WaterDairyComponent implements OnInit {
   }
 
   // Use this when we read the values from the database.
-  // onSelectChange(selectOption: string, index: number): void {
-  //   console.log('Option selected: ' + selectOption);
-  //   if(selectOption === 'curd') {
-  //     this.dynamicArray[index].unitPrice = 24;
-  //   } else if(selectOption === 'milk') {
-  //     this.dynamicArray[index].unitPrice = 26;
-  //   } else if(selectOption === 'water') {
-  //     this.dynamicArray[index].unitPrice = 30;
-  //   } else {
-  //     this.dynamicArray[index].unitPrice = 0;
-  //   }
-  // }
+  onSelectChange(selectOption: string, index: number): void {
+    console.log('Option selected: ' + selectOption);
+    if(selectOption === 'curd') {
+      this.dynamicArray[index].unitPrice = 24;
+    } else if(selectOption === 'milk') {
+      this.dynamicArray[index].unitPrice = 27;
+    } else if(selectOption === 'water') {
+      this.dynamicArray[index].unitPrice = 30;
+    } else {
+      this.dynamicArray[index].unitPrice = 0;
+    }
+  }
 }

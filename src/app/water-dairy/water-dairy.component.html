@@ -42,7 +42,7 @@
                         <tr *ngFor="let waterDairy of dynamicArray; let i = index">                            
                             <td>
                                 <!-- Use this (change)="onSelectChange(selectOption.value, i)" when we read the values from the database -->
-                                <select #selectOption name="item[{{i}}]" class="form-select" [(ngModel)]="waterDairy.item">                                                                       
+                                <select #selectOption name="item[{{i}}]" class="form-select" [(ngModel)]="waterDairy.item" (change)="onSelectChange(selectOption.value, i)">                                                                       
                                     <option selected>None</option>
                                     <option value="curd">Curd</option>
                                     <option value="milk">Milk</option>
