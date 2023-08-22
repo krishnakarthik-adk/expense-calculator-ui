@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="card-header">
+        {{pageTitle}}
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <ec-date-range-picker (dateRange) = 'getExpenseDataForDateRange($event)'></ec-date-range-picker>
+        </div>
+        <div class="table-responsive">          
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Amount</th>
+                        <th>Transaction Type</th>
+                        <th>Category</th>
+                        <th>Date Of Expense</th>
+                        <th>Notes</th>                                               
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let expenseData of monthlyExpenseData">                        
+                        <td>{{ expenseData.amount | currency:'INR': 'symbol' : '1.2-2' }}</td>
+                        <td>{{ expenseData.transactionType }}</td>
+                        <td>{{ expenseData.expenseCategory }}</td>
+                        <td>{{ expenseData.dateOfExpense }}</td>
+                        <td>{{ expenseData.notes }}</td>
+                    </tr>
+                </tbody>
+            </table>            
+        </div>
+    </div>
+    <ec-footer></ec-footer>
+</div>

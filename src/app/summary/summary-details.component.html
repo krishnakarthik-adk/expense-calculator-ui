@@ -62,7 +62,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor='let itemSummary of itemSummaryDataList'>
-                        <td>{{itemSummary.item}}</td>
+                        <td>{{itemSummary.item | titlecase}}</td>
                         <td>{{itemSummary.amountPayabalePerItem | currency:'INR':'symbol':'1.2-2'}}</td>
                     </tr>
                 </tbody>

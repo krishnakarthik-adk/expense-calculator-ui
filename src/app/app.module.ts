@@ -21,10 +21,11 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatNativeDateModule} from '@angular/material/core';
 import { WaterDairyComponent } from './water-dairy/water-dairy.component';
+import { ExpenseSearchComponent } from './expense-search/expense-search.component';
 
 @NgModule({
   declarations: [
-    AppComponent, ExpenseDataComponent, WelcomeComponent, SummaryDetailsComponent, FooterComponent, ExpenseInputComponent, WaterDairyComponent
+    AppComponent, ExpenseDataComponent, WelcomeComponent, SummaryDetailsComponent, FooterComponent, ExpenseInputComponent, WaterDairyComponent, ExpenseSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +39,7 @@ import { WaterDairyComponent } from './water-dairy/water-dairy.component';
       {path: 'summaryData', component: SummaryDetailsComponent},
       {path: 'expenseInput', component: ExpenseInputComponent},
       {path: 'waterdairyExpenseInput', component: WaterDairyComponent},
+      {path: 'searchMonthlyExpense', component: ExpenseSearchComponent},
       {path: '', component: WelcomeComponent}
     ]),
     NgbModule,

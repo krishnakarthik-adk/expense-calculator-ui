@@ -1,0 +1,23 @@
+<nav class='navbar navbar-expand navbar-light bg-light justify-content-center'>                
+    <h3>
+      {{pageTitle}}
+      <small class="text-muted">, {{appCaption}}</small>
+    </h3> 
+  </nav>
+  <nav class='navbar navbar-expand navbar-light bg-light justify-content-center'>                  
+      <ul class='nav nav-pills'>
+        <li><a class='nav-link' routerLinkActive='active' routerLink='/welcome'>Home</a></li>                    
+        <li><a class='nav-link' routerLinkActive='active' routerLink='/waterdairyExpenseInput'>Record Water & Dairy Expenses</a></li>
+        <li><a class='nav-link' routerLinkActive='active' routerLink='/expenseData'>Search Water And Dairy Expenses</a></li>
+        <li><a class='nav-link'></a></li>
+        <li><a class='nav-link' routerLinkActive='active' routerLink='/expenseInput'>Record My Expenses</a></li>
+        <li><a class='nav-link'></a></li>
+        <li><a class='nav-link' routerLinkActive='active' routerLink='/searchMonthlyExpense'>Search My Monthly Expenses</a></li>
+        <li><a class='nav-link'></a></li>
+        <li><a class='nav-link' routerLinkActive='active' routerLink='/summaryData'>Expense Summary</a></li>                    
+      </ul>  
+  </nav>
+  
+  <div class='container'>
+    <router-outlet></router-outlet>
+  </div>
