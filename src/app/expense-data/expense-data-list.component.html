@@ -39,7 +39,7 @@
                 <tbody>
                     <tr *ngFor='let expenseData of filteredExpenseDataList'>
                         <!-- <td><img *ngIf="showImage" [src]="expenseData.imageUrl" [style.width.px]="imageWidth" [style.margin.px]="imageMargin"></td> -->
-                        <td>{{expenseData.item}}</td>
+                        <td>{{expenseData.item | titlecase }}</td>
                         <td>{{expenseData.quantity}}</td>
                         <td>{{expenseData.unitPrice | currency:'INR': 'symbol' : '1.2-2' }}</td>
                         <td>{{expenseData.quantity * expenseData.unitPrice | currency:'INR':'symbol':'1.2-2'}}</td>                        
