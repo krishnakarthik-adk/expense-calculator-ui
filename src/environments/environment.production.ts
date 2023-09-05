@@ -12,7 +12,7 @@ export const environment = {
     MONTHLY_EXPENSE_SUMMARY_API: '/api/expensecalculator/v1/monthlyExpenseSummary',
 
     SAVE_WATER_DAIRY_EXPENSE_API: '/api/v1/saveWaterAndDairyExpense',
-    GET_WATER_DAIRY_EXPENSES_DATE_RANGE_API: 'api/v1/getWaterAndExpenseDataFor',
+    GET_WATER_DAIRY_EXPENSES_DATE_RANGE_API: '/api/v1/getWaterAndExpenseDataFor',
 
 
 
