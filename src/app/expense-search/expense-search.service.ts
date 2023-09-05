@@ -2,13 +2,14 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, of, tap, throwError } from 'rxjs';
 import { IExpenseSearchData } from './expense-search';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExpenseSearchService {
 
-  searchMonthlyExpesneByDateRangeUrl = '/api/expensecalculator/v1/getMonthlyExpenseRecords';
+  searchMonthlyExpesneByDateRangeUrl = environment.HOST_URL + environment.SEARCH_MONTHLY_EXPENSE_DATE_RANGE_API;
   
   selectdDates: string[] | undefined;
 

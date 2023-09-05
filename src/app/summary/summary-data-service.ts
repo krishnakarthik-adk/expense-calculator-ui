@@ -2,13 +2,14 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { IExpenseSummaryData } from "./summary-data";
 import { Observable, tap, catchError, throwError } from "rxjs";
+import { environment } from "src/environments/environment";
 
 @Injectable({
     providedIn:'root'
 })
 export class SummaryDataService {
-    private summaryDataServiceUrl = '/api/expensecalculator/v1/expenseSummary';
-    private expenseSummaryUrl ='/api/expensecalculator/v1/monthlyExpenseSummary';
+    private summaryDataServiceUrl = environment.HOST_URL + environment.SUMMARY_DATA_API;
+    private expenseSummaryUrl = environment.HOST_URL + environment.MONTHLY_EXPENSE_SUMMARY_API;
 
     constructor(private http: HttpClient){}
 

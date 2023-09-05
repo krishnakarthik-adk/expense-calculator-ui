@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ExpenseInput } from './expense-input';
 import { Observable, tap, catchError, throwError, of } from "rxjs";
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,9 @@ export class ExpenseService {
   hostUrl: string = 'http://ec2-35-180-66-174.eu-west-3.compute.amazonaws.com:8080';
 
   // selectionOptionUrl: string = '/api/expensecalculator/v1/getExpenseRecordSelectOptions'; // For local dev
-  selectionOptionUrl: string = this.hostUrl + '/api/expensecalculator/v1/getExpenseRecordSelectOptions'; // For AWS
+  selectionOptionUrl: string = environment.HOST_URL + environment.EXPENSE_RECORD_SELECT_OPTIONS_API; // For AWS
 
-  expenseFormSubmitUrl: string = this.hostUrl + '/api/expensecalculator/v1/saveExpenseRecords' + '?dateOfExpense=';
+  expenseFormSubmitUrl: string = environment.HOST_URL + environment.SAVE_EXPENSE_RECORDS_API + '?dateOfExpense=';
 
   constructor(private http: HttpClient) { }
 
