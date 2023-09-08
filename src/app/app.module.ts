@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ExpenseDataComponent } from './expense-data/expense-data-list.component';
+import { ExpenseDataComponent } from './search-water-dairy-expense/expense-data-list.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 import { RouterModule } from '@angular/router';
@@ -11,9 +11,9 @@ import { WelcomeComponent } from './welcome/welcome-component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ECDateRangePicker } from './common/date-range-picker.component';
-import { SummaryDetailsComponent } from './summary/summary-details.component';
+import { SummaryDetailsComponent } from './expense-summary/summary-details.component';
 import { FooterComponent } from './common/footer.component';
-import { ExpenseInputComponent } from './expense-input/expense-input.component';
+import { ExpenseInputComponent } from './record-expense/expense-input.component';
 
 
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -21,7 +21,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatNativeDateModule} from '@angular/material/core';
 import { WaterDairyComponent } from './water-dairy/water-dairy.component';
-import { ExpenseSearchComponent } from './expense-search/expense-search.component';
+import { ExpenseSearchComponent } from './search-record-expense/expense-search.component';
 
 @NgModule({
   declarations: [
