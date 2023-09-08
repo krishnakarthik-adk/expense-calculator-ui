@@ -21,10 +21,11 @@ export class ECDateRangePicker {
         endDate: new FormControl<Date | null>(null),
       });
 
-    expenseDateRange: string = '';
-
-    getExpensesForDateRange(): void {                       
-        this.expenseDateRange = this.range.controls.startDate.getRawValue()?.toLocaleDateString() + ',' + this.range.controls.endDate.getRawValue()?.toLocaleDateString();        
-        this.dateRange.emit(this.expenseDateRange);
+    expenseDateRange: string = '';   
+    
+    getExpensesForDateRange(): void {    
+      // passing locale 'en-US' is very important, otherwise it take the default format from where the device is accessing. Else we need to mention the format of the date mm/dd/yyyy.
+      this.expenseDateRange = this.range.controls.startDate.getRawValue()?.toLocaleDateString('en-US') + ',' + this.range.controls.endDate.getRawValue()?.toLocaleDateString('en-US');      
+      this.dateRange.emit(this.expenseDateRange);
     }
 }
