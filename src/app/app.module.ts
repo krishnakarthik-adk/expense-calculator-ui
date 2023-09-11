@@ -22,10 +22,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatNativeDateModule} from '@angular/material/core';
 import { WaterDairyComponent } from './water-dairy/water-dairy.component';
 import { ExpenseSearchComponent } from './search-record-expense/expense-search.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
-    AppComponent, ExpenseDataComponent, WelcomeComponent, SummaryDetailsComponent, FooterComponent, ExpenseInputComponent, WaterDairyComponent, ExpenseSearchComponent
+    AppComponent, ExpenseDataComponent, WelcomeComponent, SummaryDetailsComponent, FooterComponent, ExpenseInputComponent, WaterDairyComponent, ExpenseSearchComponent, PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +41,8 @@ import { ExpenseSearchComponent } from './search-record-expense/expense-search.c
       {path: 'expenseInput', component: ExpenseInputComponent},
       {path: 'waterdairyExpenseInput', component: WaterDairyComponent},
       {path: 'searchMonthlyExpense', component: ExpenseSearchComponent},
-      {path: '', component: WelcomeComponent}
+      {path: '', component: WelcomeComponent},
+      {path: '**', component: PageNotFoundComponent}
     ]),
     NgbModule,
     ECDateRangePicker,
