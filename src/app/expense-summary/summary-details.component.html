@@ -57,12 +57,16 @@
                 <thead>
                     <tr>
                         <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
                         <th>Amount Payable</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor='let itemSummary of itemSummaryDataList'>
                         <td>{{itemSummary.item | titlecase}}</td>
+                        <td>{{itemSummary.quantity }}</td>
+                        <td>{{itemSummary.unitPrice }}</td>
                         <td>{{itemSummary.amountPayabalePerItem | currency:'INR':'symbol':'1.2-2'}}</td>
                     </tr>
                 </tbody>
