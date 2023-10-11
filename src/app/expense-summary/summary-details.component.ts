@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IExpenseSummaryData } from './summary-data';
 import { SummaryDataService } from './summary-data-service';
 import { IItemSummaryData } from './summary-item-data';
+import { ExpenseDataService } from '../search-water-dairy-expense/expense-data-service';
+import { IExpenseData } from '../search-water-dairy-expense/expense-data-list';
 
 @Component({
   templateUrl: './summary-details.component.html',
@@ -16,16 +17,20 @@ export class SummaryDetailsComponent implements OnInit {
 
   monthlyExpenseDataList: IItemSummaryData[] = [];
   totalMonthlyExpense: string = '0';
+  // This is to hold the data for the water and dairy expense details modal pop-up
+  waterAndDairyExpenseDataList: IExpenseData[] = [];
 
   errorMessage: string = '';
   month: string = 'None';
   year: string = 'None';
+  dateRange: string = '';
+  popUpRequestedFor: string = '';
 
-  constructor(private expenseSummaryService: SummaryDataService) { }
+  constructor(private expenseSummaryService: SummaryDataService,private waterAndDairyExpenseService: ExpenseDataService) { }
 
 
   getExpenseSummary(): void {
-
+    
     this.expenseSummaryService.getWaterAndDairyMonthlyExpense(this.month, this.year).subscribe({
       next: expenseSummaryDataObject => {
         this.finalAmountPayabale = expenseSummaryDataObject.finalAmountPayable;
@@ -41,7 +46,24 @@ export class SummaryDetailsComponent implements OnInit {
       },
       error: err => this.errorMessage = err
     });
-  }
+  }  
+  // Modal pop-up
+  getWaterAndDairyExpenseDetailsForPopUp(item: string): void {
+    const firstDay = new Date(parseInt(this.year), parseInt(this.month)-1, 1 );
+    const lastDay = new Date(parseInt(this.year), (parseInt(this.month)-1) + 1,0 );
+
+    this.popUpRequestedFor = item;
+
+    this.dateRange = firstDay.toLocaleDateString('en-EN') + ',' + lastDay.toLocaleDateString('en-EN');
+    
+    this.waterAndDairyExpenseService.getWaterAndDairyExpenseDetailsForPopUp(this.dateRange, item).subscribe({
+        next: waterAndDAiryDataList => {
+            this.waterAndDairyExpenseDataList = waterAndDAiryDataList;               
+        },
+        error: err => this.errorMessage = err
+    });
+}
+
 
   // On page load
   ngOnInit(): void {

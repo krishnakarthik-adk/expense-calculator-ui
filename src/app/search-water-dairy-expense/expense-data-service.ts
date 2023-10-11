@@ -13,6 +13,7 @@ export class ExpenseDataService {
     // private expenseDataUrl = "api/v1/getWaterAndExpenseData" // From the spring boot app
     private expenseDataUrl = "api/v1/getWaterAndExpenseData" // From the spring boot app, takes date range
     private expenseDataForDateRangeUrl = environment.HOST_URL + environment.GET_WATER_DAIRY_EXPENSES_DATE_RANGE_API;
+    private expenseDataForDateRangeUrlForPopUp = environment.HOST_URL + environment.GET_WATER_DAIRY_EXPENSES_DATE_RANGE_POP_UP_API;
     selectdDates: string[] | undefined;
 
     constructor(private http: HttpClient){}
@@ -26,6 +27,7 @@ export class ExpenseDataService {
 
     getExpenseDataForDateRange(dateRange: string):Observable<IExpenseData[]> {
         this.selectdDates = dateRange.split(',');       
+
         // alert('Final URL: ' + this.expenseDataForDateRangeUrl+'?strStartDate=' + this.dates[0] + '&strEndDate=' + this.dates[1]);
         return this.http.get<IExpenseData[]>(this.expenseDataForDateRangeUrl+'?strStartDate=' + this.selectdDates[0] + '&strEndDate=' + this.selectdDates[1]).pipe(
             tap(data => console.log('All', JSON.stringify(data))), // this is to look through the observable
@@ -33,6 +35,14 @@ export class ExpenseDataService {
         );
     }
    
+    getWaterAndDairyExpenseDetailsForPopUp(dateRange: string, item: string): Observable<IExpenseData[]> {
+        this.selectdDates = dateRange.split(','); 
+
+        return this.http.get<IExpenseData[]>(this.expenseDataForDateRangeUrlForPopUp+'/'+ item + '?strStartDate=' + this.selectdDates[0] + '&strEndDate=' + this.selectdDates[1]).pipe(
+            tap(data => console.log('All', JSON.stringify(data))), // this is to look through the observable
+            catchError(this.handleError)
+        );
+    }
 
     private handleError(err: HttpErrorResponse): Observable<never> {
         // in a real world app, we may send the server to some remote logging infrastructure
