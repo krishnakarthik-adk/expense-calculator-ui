@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 export class ExpenseSearchService {
 
   searchMonthlyExpesneByDateRangeUrl = environment.HOST_URL + environment.SEARCH_MONTHLY_EXPENSE_DATE_RANGE_API;
+  searchMonthlyExpesneByCategory = environment.HOST_URL + environment.SEARCH_MONTHLY_EXPENSE_BY_CATEGORY_API;
   
   selectdDates: string[] | undefined;
 
@@ -21,6 +22,18 @@ export class ExpenseSearchService {
     this.selectdDates = searchDateRange.split(',');
 
     return this.http.get<IExpenseSearchData[]>(this.searchMonthlyExpesneByDateRangeUrl + '?strStartDate=' + this.selectdDates[0] + '&strEndDate=' + this.selectdDates[1]).pipe(
+      tap(data => console.log('All', JSON.stringify(data))), // this is to look through the observable
+      catchError(this.handleError)
+    );
+  }
+
+  // For modal pop-up for expense details on the summary screen
+  getMonthlyExpenseForDateRangeByCategory(dateRange: string, category: string): Observable<IExpenseSearchData []>{
+    console.log('searchDateRange Received: ' + dateRange);
+    
+    this.selectdDates = dateRange.split(',');
+
+    return this.http.get<IExpenseSearchData[]>(this.searchMonthlyExpesneByCategory + '/' + category + '?strStartDate=' + this.selectdDates[0] + '&strEndDate=' + this.selectdDates[1]).pipe(
       tap(data => console.log('All', JSON.stringify(data))), // this is to look through the observable
       catchError(this.handleError)
     );

@@ -16,6 +16,6 @@ export const environment = {
 
     GET_WATER_DAIRY_EXPENSES_DATE_RANGE_POP_UP_API: '/api/v1/getWaterAndExpenseDataForItem',
 
-
+    SEARCH_MONTHLY_EXPENSE_BY_CATEGORY_API: '/api/expensecalculator/v1/getMonthlyExpenseRecordsByCategory',
 
 };

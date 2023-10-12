@@ -3,6 +3,8 @@ import { SummaryDataService } from './summary-data-service';
 import { IItemSummaryData } from './summary-item-data';
 import { ExpenseDataService } from '../search-water-dairy-expense/expense-data-service';
 import { IExpenseData } from '../search-water-dairy-expense/expense-data-list';
+import { ExpenseSearchService } from '../search-record-expense/expense-search.service';
+import { IExpenseSearchData } from '../search-record-expense/expense-search';
 
 @Component({
   templateUrl: './summary-details.component.html',
@@ -16,6 +18,7 @@ export class SummaryDetailsComponent implements OnInit {
   finalAmountPayabale: string = '0';
 
   monthlyExpenseDataList: IItemSummaryData[] = [];
+  monthlyExpenseList: IExpenseSearchData[] = [];
   totalMonthlyExpense: string = '0';
   // This is to hold the data for the water and dairy expense details modal pop-up
   waterAndDairyExpenseDataList: IExpenseData[] = [];
@@ -26,7 +29,7 @@ export class SummaryDetailsComponent implements OnInit {
   dateRange: string = '';
   popUpRequestedFor: string = '';
 
-  constructor(private expenseSummaryService: SummaryDataService,private waterAndDairyExpenseService: ExpenseDataService) { }
+  constructor(private expenseSummaryService: SummaryDataService,private waterAndDairyExpenseService: ExpenseDataService, private monthlyExpenseService: ExpenseSearchService) { }
 
 
   getExpenseSummary(): void {
@@ -47,7 +50,7 @@ export class SummaryDetailsComponent implements OnInit {
       error: err => this.errorMessage = err
     });
   }  
-  // Modal pop-up
+  // Modal pop-up for water and dairy expenses
   getWaterAndDairyExpenseDetailsForPopUp(item: string): void {
     const firstDay = new Date(parseInt(this.year), parseInt(this.month)-1, 1 );
     const lastDay = new Date(parseInt(this.year), (parseInt(this.month)-1) + 1,0 );
@@ -63,7 +66,23 @@ export class SummaryDetailsComponent implements OnInit {
         error: err => this.errorMessage = err
     });
 }
+  // Modal pop-up for monthly expenses
+  getMonthlyExpenseByCategory(category: string): void {
+      const firstDay = new Date(parseInt(this.year), parseInt(this.month)-1, 1 );
+      const lastDay = new Date(parseInt(this.year), (parseInt(this.month)-1) + 1,0 );
 
+      this.popUpRequestedFor = category;
+
+      this.dateRange = firstDay.toLocaleDateString('en-EN') + ',' + lastDay.toLocaleDateString('en-EN');
+
+      this.monthlyExpenseService.getMonthlyExpenseForDateRangeByCategory(this.dateRange, category).subscribe({
+        next: monthlyExpenseList => {
+          this.monthlyExpenseList = monthlyExpenseList;
+        },
+        error: err => this.errorMessage = err
+      });
+
+}
 
   // On page load
   ngOnInit(): void {
